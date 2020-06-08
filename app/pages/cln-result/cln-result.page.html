@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title  color="primary">{{feature}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<h3 class="header">{{text}}</h3>
+<br>
+<ion-list *ngIf="feature=='Entity Analysis '">
+  <ion-text *ngFor="let i of result.entities"  >
+    <ion-grid fixed>
+      <ion-row class="content">
+        <ion-col size="4"> <p class="name">  {{i.name}}  </p></ion-col>
+        <ion-col size="8"><p>type : {{i.type}}</p>
+          <p>wikipedia_url :{{i.metadata.wikipedia_url}}</p></ion-col>
+      </ion-row>
+    </ion-grid>   
+  </ion-text>
+</ion-list>
+
+<ion-list *ngIf="feature=='Syntax Analysis'">
+  <ion-text *ngFor="let i of result.tokens"  >
+    <ion-grid fixed>
+      <ion-row class="content">
+        <ion-col size="4"> <p class="name">  {{i.text.content}}  </p></ion-col>
+        <ion-col size="8"><p>Tag : {{i.partOfSpeech.tag}}</p>
+          <p>dependencyEdge label :{{i.dependencyEdge.label}}</p></ion-col>
+      </ion-row>
+    </ion-grid>    
+  </ion-text>
+</ion-list>
+
+<ion-list *ngIf="feature=='Sentiment Analyze'">
+   <p class="name">language : {{result.language}}</p>
+  <ion-text *ngFor="let i of result.sentences"  >
+    <ion-grid fixed>
+      <ion-row class="content">
+        <ion-col size="4"> <p class="name">  {{i.text.content}}  </p></ion-col>
+        <ion-col size="8"><p>sentiment magnitude : {{i.sentiment.magnitude}}</p>
+          <p>sentiment score :{{i.sentiment.score}}</p></ion-col>
+      </ion-row>
+    </ion-grid>    
+  </ion-text>
+</ion-list>
+
+
+</ion-content>

@@ -1,0 +1,63 @@
+  <ion-content class="ion-padding">
+
+    <!-- <ion-card *ngFor="let i of homeArr" color="tertiary">
+         <ion-card-content>
+        <img [src]="i.img" height="100px" width="100px"/>
+        <p>{{i.name}}</p>
+        <p>{{i.desc}}</p>
+      </ion-card-content>
+    </ion-card> -->
+    <h2 class="header">Speech to Text</h2>
+
+    <ion-button (click)="startStop()">
+      <ion-icon slot="icon-only" [name]="isRecorging?'mic-outline':'mic-off-outline'"></ion-icon>
+    </ion-button>
+
+    <br/><br/>
+    <h2 class="header">Cloud Natural Language</h2>
+    <ion-item>
+      <ion-input [(ngModel)]="text" placeholder="Enter something ..."></ion-input>
+    </ion-item>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="4">
+          <ion-button (click)="sendrequestCNL_Entities()" expand="block" fill="outline" >
+            Entities
+          </ion-button>      
+        </ion-col>
+
+        <ion-col size="4">
+          <ion-button (click)="sendrequestCNL_Sentiment()" expand="block" fill="outline">
+            Sentiment
+          </ion-button>      
+        </ion-col>
+
+        <ion-col size="4">
+          <ion-button (click)="sendrequestCNL_Syntax()" expand="block" fill="outline">
+            Syntax
+          </ion-button>      
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <img [src]="'data:image/jpeg;base64,'+base64" alt=""> -->
+    <br /><br />
+    <h2 class="header" >Cloud Vision </h2>
+    <h4>Select any one feature to be applied:</h4>
+<ion-list>
+  <ion-radio-group name="auto" [(ngModel)]="selectedfeature" value="tesla">
+    <ion-item  *ngFor="let i of feature" >
+      <ion-label>{{i}}</ion-label>
+      <ion-radio  [value]="i"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+
+ 
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="selectPhoto()">
+      <ion-icon name="images">
+      </ion-icon>
+      </ion-fab-button>
+      </ion-fab>
+      </ion-content>
+            

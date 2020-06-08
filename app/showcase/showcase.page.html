@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{feature}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+​
+​
+<ion-content>
+  ​
+  <img [src]="'data:image/jpeg;base64,'+this.image" class="picture" />
+  ​<ion-list *ngIf="feature=='TEXT_DETECTION'">
+
+    <ion-grid fixed>
+      <ion-row class="content" *ngFor="let i of result.responses[0].textAnnotations">
+        <ion-col size="3">
+          <p class="name">description :</p>
+        </ion-col>
+        <ion-col size="9">
+          <p>{{i.description}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <!--  -->
+  ​<ion-list *ngIf="feature=='LOGO_DETECTION'">
+
+    <ion-grid fixed>
+      <ion-row class="content" *ngFor="let i of result.responses[0].logoAnnotations">
+        <ion-col size="3">
+          <p class="name">description :</p>
+        </ion-col>
+        <ion-col size="9">
+          <p>{{i.description}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <p class="name">score :</p>
+        </ion-col>
+        <ion-col size="9">
+          <p>{{i.score}}</p>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+  </ion-list>
+
+
+
+  ​<ion-list *ngIf="feature=='FACE_DETECTION'">
+
+    <ion-grid fixed>
+      <ion-row class="content" *ngFor="let i of result.responses[0].faceAnnotations">
+        <ion-col size="6">
+          <p class="name">detectionConfidence :</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{i.detectionConfidence}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="name">landmarkingConfidence :</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{i.landmarkingConfidence}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="name">landmarkingConfidence :</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{i.landmarkingConfidence}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="name">joyLikelihood :</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{i.joyLikelihood}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="name">sorrowLikelihood :</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{i.sorrowLikelihood}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="name">surpriseLikelihood :</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{i.surpriseLikelihood}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="name">angerLikelihood :</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{i.angerLikelihood}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="name">underExposedLikelihood :</p>
+        </ion-col>
+        <ion-col size="6">
+
+          <p>{{i.underExposedLikelihood}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="name">blurredLikelihood :</p>
+        </ion-col>
+        <ion-col size="6">
+
+          <p>{{i.blurredLikelihood}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="name">headwearLikelihood :</p>
+        </ion-col>
+        <ion-col size="6">
+          <p>{{i.headwearLikelihood}}</p>
+        </ion-col>
+        <div *ngFor="let y of i.landmarks">
+          <ion-col size="3">
+            <p class="name">type :</p>
+          </ion-col>
+          <ion-col size="9">
+            <p>{{y.type}}</p>
+          </ion-col>
+          <ion-col size="3">
+            <p class="name">position x :</p>
+          </ion-col>
+          <ion-col size="9">
+            <p>{{y.position.x}}</p>
+          </ion-col>
+          <ion-col size="3">
+            <p class="name">position y :</p>
+          </ion-col>
+          <ion-col size="9">
+            <p>{{y.position.y}}</p>
+          </ion-col>
+          <ion-col size="3">
+            <p class="name">position z :</p>
+          </ion-col>
+          <ion-col size="9">
+            <p>{{y.position.z}}</p>
+          </ion-col>
+        </div>
+
+
+
+      </ion-row>
+    </ion-grid>
+
+  </ion-list>
+
+
+</ion-content>
